@@ -8,6 +8,9 @@ const flightcrewSchema = new Schema({
 	phoneNo: {
 		type: String,
 	},
+	role: {
+		type: String,
+	}
 	
 }, { timestamps: true })
 

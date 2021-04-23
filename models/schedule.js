@@ -13,10 +13,10 @@ const scheduleSchema = new Schema({
 		type: Number,
         required: true, min: 1, max: 9999
 	},
-	arr: {
+	arrival: {
 		type: String
 	},
-	dep: {
+	departur: {
 		type: String
 	},
 

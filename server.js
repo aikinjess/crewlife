@@ -8,7 +8,6 @@ require('dotenv').config();
 require('./config/database');
 
 const authRouter = require('./routes/auth')
-const userRouter = require('./routes/users');
 const flightcrewRouter = require('./routes/flightcrews')
 const scheduleRouter = require('./routes/schedules')
 const passengerRouter = require('./routes/passengers')
@@ -25,7 +24,6 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 
 app.use('/api/auth', authRouter);
-app.use('/api/users', userRouter);
 app.use('/api/flightcrews', flightcrewRouter)
 app.use('/api/schedules', scheduleRouter)
 app.use ("/api/passengers", passengerRouter)

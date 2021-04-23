@@ -1,9 +1,0 @@
-.MySavedItems,
-.saved-schedules {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    min-width: 20rem;
-    width: 100%;
-}

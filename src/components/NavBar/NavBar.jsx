@@ -1,84 +1,43 @@
-//import React from "react";
-import React, {useEffect } from 'react';
-import { Link } from "react-router-dom";
-import './NavBar.css'
-import M from "materialize-css/dist/js/materialize.min.js"
+import React from 'react';
 
 const NavBar = ({ user, handleLogout }) => {
-  
-  useEffect(() => {
-    let sidenav = document.querySelector("#mobile-demo");
-    M.Sidenav.init(sidenav, {edge:'right'});
-  }, []);
-
-  return (
+  return(
     <>
-      {user ? (
-        <div className="navbar-fixed">
-        <nav>
-          <div id="NavBarDiv" className="nav-wrapper teal lighten-2" >
-            <a href="#" data-target="mobile-demo" className="sidenav-trigger right"><i className="material-icons">menu</i></a>
-            <ul id="NavBarList" className="right hide-on-med-and-down davidsNavBar">
-
-            <li id="mySchedule">
-              <a className="active" href="/mySchedule">My Schedule</a>
-            </li>
-            <li id="flightCrew">
-              <a className="active" href="flightCrew">Flight Crew</a>
-            </li>
-            <li id="passengers">
-              <a className="active" href="/passengers">Passengers</a>
-            </li>
-            <li id="chat">
-              <a className="active" href="/chat">Chat</a>
-            </li>
-            <li id="logOut" className="right">
-              <a className="active" href=" " onClick={handleLogout}>logOut</a>
-            </li>
-            </ul>
-          </div>
-
-        <ul className="sidenav" id="mobile-demo">
-         <li id="mySchedule">
-              <a className="active" href="/mySchedule">My Schedule</a>
-            </li>
-            <li id="flightCrew">
-              <a className="active" href="/flightCrew">Flight Crew</a>
-            </li>
-            <li id="passengers">
-              <a className="active" href="/passengers">Passengersy</a>
-            </li>
-            <li id="chat">
-              <a className="active" href="/chat">Chat</a>
-            </li>
-            <li id="logOut">
-              <a className="active" href=" " onClick={handleLogout}>logOut</a></li>
-        </ul>
-        </nav>
+      {user ?
+      <nav>
+        <div className="nav-wrapper">
+          <a className=" left" href="/"><img src="https://fontmeme.com/permalink/200705/e2371cf438042048aa22fb9341eadbba.png" height='66' alt="netflix-font" border="0"/></a>
+          <ul id="nav-mobile" className="right">
+            <li><a href=" " className="nav-link">Welcome, {user.name}</a></li>
+            <li><a className="nav-link-a" href="/flightcrews">Flight Crew</a></li>
+            <li><a href="/flightscrews"><i className="material-icons left small">flight crew</i></a></li>
+            <li><a className="nav-link-b" href="/flightcrews/add">Add Crew</a></li>
+            <li><a href="/movies/add"><i className="material-icons left small">add movie</i></a></li>
+            <li><a className="nav-link-a" href="/tvshows">All TV Shows</a></li>
+            <li><a href="/tvshows"><i className="material-icons left small">tv</i></a></li>
+            <li><a className="nav-link-b" href="/tvshows/add">Add a TV Show</a></li>
+            <li><a href="/tvshows/add"><i className="material-icons left small">add tv</i></a></li>
+            <li><a href=" " className="nav-link" onClick={handleLogout}>Log Out</a></li>
+          </ul>
         </div>
-      ) : (
-        <div className="navbar-fixed">
-          <nav>
-            <div className="nav-wrapper teal lighten-2">
-              <ul id="nav-mobile" className="right">
-                <li>
-                  <Link to="/login" className="nav-link">
-                    Log In
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/signup" className="nav-link">
-                    Sign Up
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
+      </nav>
+    :
+      <nav>
+        <div className="nav-wrapper">
+          <a className=" left" href="/"><img src="https://fontmeme.com/permalink/200705/e2371cf438042048aa22fb9341eadbba.png" height='66' alt="netflix-font" border="0"/></a>
+          <ul id="nav-mobile" className="right">
+            <li><a className="nav-link" href="/movies">All Movies</a></li>
+            <li><a href="/movies"><i className="material-icons left small">movie</i></a></li>
+            <li><a className="nav-link" href="/tvshows">All TV Shows</a></li>
+            <li><a href="/tvshows"><i className="material-icons left small">tv</i></a></li>
+            <li><a href="/login" className="nav-link">Log In</a></li>
+            <li><a href="/signup" className="nav-link">Sign Up</a></li>
+          </ul>
         </div>
-
-      )}
+      </nav>
+      }
     </>
-  );
-};
+  )
+}
 
 export default NavBar;

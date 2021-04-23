@@ -2,7 +2,6 @@ const router = require('express').Router();
 const schedulesCtrl = require('../controllers/schedules');
 
 router.get('/', checkAuth,schedulesCtrl.index); 
-router.get('/schedule/:id',checkAuth, schedulesCtrl.getOneSchedule)
 router.use(require('../config/auth'));
 router.post('/', checkAuth, schedulesCtrl.create)
 router.put('/:id', checkAuth, schedulesCtrl.update)

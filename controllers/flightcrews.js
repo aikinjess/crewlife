@@ -4,30 +4,32 @@ module.exports = {
   create,
   index,
   delete: deleteOne,
-  update,
+  update
 }
 
-function update(req,res) {
-  Schedule.findByIdAndUpdate(req.params.id, req.body)
+function update(req, res) {
+  Flightcrew.findByIdAndUpdate(req.params.id, req.body, {new: true})
   .then(flightcrew => {res.json(flightcrew)})
   .catch(err => {res.json(err)})
 }
 
-function deleteOne(req,res) {
+function deleteOne(req, res) {
   Flightcrew.findByIdAndDelete(req.params.id)
   .then(flightcrew => {res.json(flightcrew)})
   .catch(err => {res.json(err)})
 }
 
-function index(req,res) {
-  Flightcrew.find([])
+function index(req, res) {
+  Flightcrew.find({})
+  .populate('addedBy')
   .then(flightcrews => {res.json(flightcrews)})
   .catch(err => {res.json(err)})
 }
 
 function create(req, res) {
-    req.body.addedBy = req.user._id
-    Flightcrew.create(req.body)
-    .then(flightcrew => {res.json(flightcrew)})
-    .catch(err => {res.json(err)})
+  req.body.addedBy = req.user._id
+  req.body.cast = req.body.cast.split(',');
+  Flightcrew.create(req.body)
+  .then(flightcrew => {res.json(flightcrew)})
+  .catch(err => {res.json(err)})
 }
