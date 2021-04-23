@@ -4,7 +4,7 @@ const passengersCtrl = require('../controllers/passengers');
 
 router.get('/', checkAuth,passengersCtrl.index); 
 router.use(require('../config/auth'));
-router.post('/', checkAuth, passengerssCtrl.create)
+router.post('/', checkAuth, passengersCtrl.create)
 router.put('/:id', checkAuth, passengersCtrl.update)
 router.delete('/:id', checkAuth, passengersCtrl.delete)
 

@@ -1,16 +1,16 @@
 import React from "react";
-import ResourceCard from "../../components/ResourceCard/ResourceCard";
+import ScheduleCard from "../../components/ScheduleCard/ScheduleCard'
 import './ScheduleList.css'
 
-const ResourceList = (props) => {
+const ScheduleList = (props) => {
   return (
     <>
-      <h2 className="MySavedItems">My Saved Items</h2>
-      <div className="saved-resources">
-        {props.savedItems.map((resource) => (
-          <ResourceCard
-            handleDeleteResource={props.handleDeleteResource}
-            resource={resource}
+      <h2 className="MySavedItems">My Schedules</h2>
+      <div className="saved-schedules">
+        {props.savedItems.map((schedule) => (
+          <ScheduleCard
+            handleDeleteSchedule={props.handleDeleteSchedule}
+            schedule={schedule}
             user={props.user}
           />
         ))}
@@ -19,4 +19,4 @@ const ResourceList = (props) => {
   );
 };
 
-export default ResourceList;
+export default ScheduleList;
