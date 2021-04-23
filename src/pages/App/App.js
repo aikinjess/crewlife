@@ -6,7 +6,7 @@ import Login from '../Login/Login';
 import Signup from '../Signup/Signup';
 import authService from '../../services/authService';
 import Landing from '../Landing/Landing'
-
+import AddSchedule from "../AddSchedule/AddSchedule'
 
 class App extends Component {
   state = {

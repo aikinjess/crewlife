@@ -8,7 +8,7 @@ class ShowSchedule extends Component {
   }
 
   async componentDidMount() {
-    const schedule = await scheduleAPI.getResource(this.props.location.state.schedule._id);
+    const schedule = await scheduleAPI.getSchedule(this.props.location.state.schedule._id);
     this.setState( [...schedule])
   }
 
@@ -24,7 +24,7 @@ class ShowSchedule extends Component {
             <p>Schedule: <br/>{schedule.description}</p>
           </div>
           <div className="row">
-            <p>Tags: <br />{schedule.tag}</p>
+        
             <button
               className="btn"
               onClick={() => this.props.handleAddToSavedItems(schedule)}
