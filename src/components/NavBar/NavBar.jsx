@@ -10,6 +10,8 @@ const NavBar = ({ user, handleLogout }) => {
             <li><a href=" " className="nav-link">Welcome, {user.name}</a></li>
             <li><a className="nav-link-a" href="/flightcrews">Flight Crew</a></li>
             <li><a className="nav-link-b" href="/flightcrews/add">Add Crew</a></li>
+            <li><a className="nav-link-a" href="/passengers">Passengers</a></li>
+            <li><a className="nav-link-b" href="/passengers/add">Add Passengers</a></li>
             <li><a href=" " className="nav-link" onClick={handleLogout}>Log Out</a></li>
           </ul>
         </div>

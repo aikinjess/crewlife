@@ -10,7 +10,7 @@ function PassengerCard({ passenger, handleDeletePassenger }) {
           <h6>Food:  {passenger.food}</h6>
           <h6>Drink: {passenger.drink}</h6>
           <div>Snack:  {passenger.snack}</div>
-          <div>Cast: {tvshow.cast.join(', ')}</div>
+          <div>Seat #: {passenger.seatNo}</div>
           <>
             <button type="submit" className="btn red" onClick={() => handleDeletePassenger(passenger._id)}>
               <i className="material-icons left">delete</i>    

@@ -27,8 +27,6 @@ function index(req, res) {
 }
 
 function create(req, res) {
-  req.body.addedBy = req.user._id
-  req.body.cast = req.body.cast.split(',');
   Flightcrew.create(req.body)
   .then(flightcrew => {res.json(flightcrew)})
   .catch(err => {res.json(err)})

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import './AddTVShow.css'
+import './AddPassenger.css'
 import { useHistory } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import * as passengerAPI from '../../services/passengers-api'

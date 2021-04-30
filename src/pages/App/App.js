@@ -9,6 +9,9 @@ import Landing from '../Landing/Landing'
 import AddFlightcrew from '../AddFlightcrew/AddFlightcrew';
 import FlightcrewList from '../FlightcrewList/FlightcrewList'
 import * as flightcrewAPI from '../../services/flightcrews-api'
+import AddPassenger from '../AddPassenger/AddPassenger';
+import PassengerList from '../PassengerList/PassengerList'
+import EditPassenger from '../EditPassenger/EditPassenger'
 
 
 class App extends Component {
@@ -28,7 +31,6 @@ class App extends Component {
   
   handleUpdateFlightcrew = async updatedFlightcrewData => {
     const updatedFlightcrew = await flightcrewAPI.update(updatedFlightcrewData);
-    updatedFlightcrew.addedBy = {name: this.state.user.name, _id: this.state.user._id}
     const newFlightcrewsArray = this.state.flightcrews.map(f => 
       f._id === updatedFlightcrew._id ? updatedFlightcrew : f
     );
@@ -40,9 +42,8 @@ class App extends Component {
 
   handleAddFlightcrew = async newFlightcrewData => {
     const newFlightcrew = await flightcrewAPI.create(newFlightcrewData);
-    newFlightcrew.addedBy = { name: this.state.user.name, _id: this.state.user._id }
     this.setState(state => ({
-      flightcrews: [...state.flightcrews, newFlightcrew]
+      flightcrews: [...state.newFlightcrews, newFlightcrew]
     }), () => this.props.history.push('/flightcrews'));
   }
   handleDeleteFlightcrew = async id => {
@@ -99,7 +100,27 @@ class App extends Component {
             handleDeleteFlightcrew={this.handleDeleteFlightcrew}
           />
         } />
-
+        <Route exact path='/passengers/add' render={() => 
+          authService.getUser() ?
+          <AddPassenger
+            user={this.state.user}
+          />
+          :
+          <Redirect to='/login' />
+        }/>
+        <Route exact path='/passengers' render={() => 
+          <PassengerList 
+            user={this.state.user}
+          />
+        }/>
+        <Route exact path='/editPassenger' render={() =>
+          authService.getUser() ?
+          <EditPassenger
+            user={this.state.user}
+          />
+          :
+          <Redirect to='/login' />
+        }/>
       </>
     );
   }
