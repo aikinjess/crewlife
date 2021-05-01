@@ -8,9 +8,11 @@ require('dotenv').config();
 require('./config/database');
 
 const authRouter = require('./routes/auth')
-const flightcrewRouter = require('./routes/flightcrews')
+const crewRouter = require('./routes/crew')
 const scheduleRouter = require('./routes/schedules')
 const passengerRouter = require('./routes/passengers')
+const tripRouter = require('./routes/trip')
+const userRouter = require('./routes/users')
 
 const cors = require('cors')
 
@@ -24,9 +26,11 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 
 app.use('/api/auth', authRouter);
-app.use('/api/flightcrews', flightcrewRouter)
+app.use('/api/crews', crewRouter)
 app.use('/api/schedules', scheduleRouter)
 app.use ("/api/passengers", passengerRouter)
+app.use ("/api/trip", tripRouter)
+app.use ("/api/users", userRouter)
 
 
 app.get('/*', function(req, res) {

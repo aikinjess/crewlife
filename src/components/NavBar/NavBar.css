@@ -1,13 +1,43 @@
-.nav-link,
-.active {
+nav {
+  background: #fff;
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: 'Raleway';
+  font-weight: 400;
+  box-shadow: 5px 5px 10px rgba(50,50,50, .3);
+
+}
+nav ul {
   margin: 0;
+  padding: 0;
+  width: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.active {
-  transition: all 0.3s ease 0s;
-  cursor: pointer;
+nav ul.nav-login {
+  width: 30%;
+  justify-content: flex-end;
+}
+nav li {
+  display: flex;
+  height: 100%;
+  padding: 1.5rem 1.5rem;
+  align-items: center;
 }
 
-.active:hover {
-  color: black;
+nav li a {
+  font-size: 2rem;
+  color: #333;
+  text-decoration: none;
+  text-shadow: 2px 2px 2px #ccc;
 }
+
+nav li:hover {
+  /* text-decoration: underline; */
+  background: #eee;
+}
+

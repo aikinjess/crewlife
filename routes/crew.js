@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const scheduleCtrl = require('../controllers/schedules');
+const crewCtrl = require('../controllers/crew');
 
 /*---------- Public Routes ----------*/
 
 /*---------- Protected Routes ----------*/
 router.use(require("../config/auth"));
-router.post('/', checkAuth, scheduleCtrl.create);
-router.put('/:id', checkAuth, scheduleCtrl.update);
-router.delete('/:itinid/:id', checkAuth, scheduleCtrl.delete);
+router.post('/', checkAuth, crewCtrl.create);
+router.put('/:id', checkAuth, crewCtrl.update);
+router.delete('/:itinid/:id', checkAuth, crewCtrl.delete);
 
 function checkAuth(req, res, next) {
   if (req.user) return next();

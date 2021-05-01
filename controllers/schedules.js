@@ -1,35 +1,44 @@
-const Schedule = require('../models/schedule')
+const Trip = require('../models/trip')
 
 module.exports = {
   create,
-  index,
-  delete: deleteOne,
   update,
-}
-
-function update(req, res) {
-  Schedule.findByIdAndUpdate(req.params.id, req.body, {new: true})
-  .then(schedule => {res.json(schedule)})
-  .catch(err => {res.json(err)})
-}
-
-function deleteOne(req, res) {
-  Schedule.findByIdAndDelete(req.params.id)
-  .then(schedule => {res.json(schedule)})
-  .catch(err => {res.json(err)})
+  delete: deleteSchedule,
 }
 
 function create(req, res) {
-    req.body.addedBy = req.user._id
-    req.body.cast = req.body.cast.split(',');
-    Schedule.create(req.body)
-    .then(schedule => {res.json(schedule)})
-    .catch(err => {res.json(err)})
-  }
+  Trip.findById(req.body.tripID)
+  .then(trip => {
+    console.log(trip)
+    console.log(req.body)
+    trip.schedules.push(req.body)
+    Trip.save()
+    .then(() => {
+      res.json(trip)
+    })
+  })
+}
 
-function index(req, res) {
-  Schedule.find({})
-  .populate('addedBy')
-  .then(movies => {res.json(schedule)})
-  .catch(err => {res.json(err)})
+function deleteSchedule(req, res){
+  Trip.findOne({_id: req.params.tripid, owner: req.user._id})  
+  .then(trip => {
+    const index = trip.crews.findIndex(schedule => schedule._id.equals(req.params.id))
+    trip.schedules.splice(index, 1)
+    trip.save()
+    .then((trip) => {
+      res.json(trip)
+    })
+  })
+}
+
+function update(req, res){
+  Trip.findOne({_id: req.body.tripID, owner: req.user._id})
+  .then(trip => {
+    const index = trip.schedules.findIndex(schedule => schedule._id.equals(req.body.scheduleId))
+    trip.schedules[index] = req.body.schedule;
+    trip.save()
+    .then((trip) => {
+      res.json(trip)
+    })
+  })
 }

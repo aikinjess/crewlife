@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 export const useForm = (initialValues) => {
-  const [values, setValues] = useState(initialValues)
+  const [values, setValues] = useState(initialValues);
 
   return [
-    values, 
+    values,
     e => {
       setValues({
         ...values,

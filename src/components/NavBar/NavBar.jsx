@@ -1,32 +1,30 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import './NavBar.css'
 
-const NavBar = ({ user, handleLogout }) => {
-  return(
-    <>
+import { Link } from "react-router-dom";
+import { UserContext } from '../../components/UserContext'
+
+const NavBar = ({ handleLogout }) => {
+  const user = useContext(UserContext);
+
+  return (
+    <nav>
+      <ul>
+       
+        <li><Link to="/trip">My Trips</Link></li>
+        <li><Link to="/trip/new">New Trip</Link></li>
+      </ul>
       {user ?
-      <nav>
-        <div className="nav-wrapper">
-          <ul id="nav-mobile" className="right">
-            <li><a href=" " className="nav-link">Welcome, {user.name}</a></li>
-            <li><a className="nav-link-a" href="/flightcrews">Flight Crew</a></li>
-            <li><a className="nav-link-b" href="/flightcrews/add">Add Crew</a></li>
-            <li><a className="nav-link-a" href="/passengers">Passengers</a></li>
-            <li><a className="nav-link-b" href="/passengers/add">Add Passengers</a></li>
-            <li><a href=" " className="nav-link" onClick={handleLogout}>Log Out</a></li>
-          </ul>
-        </div>
-      </nav>
-    :
-      <nav>
-        <div className="nav-wrapper">
-          <ul id="nav-mobile" className="right">
-            <li><a href="/login" className="nav-link">Log In</a></li>
-            <li><a href="/signup" className="nav-link">Sign Up</a></li>
-          </ul>
-        </div>
-      </nav>
+        <ul className="nav-login">
+          <li><Link to="" onClick={handleLogout}>Logout</Link></li>
+        </ul>
+      :
+        <ul className="nav-login">
+          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/signup">Sign Up</Link></li>
+        </ul>
       }
-    </>
+    </nav>
   )
 }
 
