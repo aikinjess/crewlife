@@ -1,44 +1,73 @@
-const Trip = require('../models/trip')
+const Crew = require('../models/crew');
 
 module.exports = {
+  index,
   create,
   update,
   delete: deleteCrew,
+  show,
 }
 
-function create(req, res) {
-  Trip.findById(req.body.itinID)
-  .then(trip => {
-    console.log(trip)
-    console.log(req.body)
-    trip.crews.push(req.body)
-    Trip.save()
-    .then(() => {
-      res.json(trip)
+function index(req, res) {
+  try {
+    Crew.find({owner: req.user._id})
+    .then((crews) => {
+      res.json(crews)
     })
+  } catch (error) {
+    res.status(400).send({'err': err.errmsg});
+  }
+}
+
+function create(req,res) {
+  try {
+    Crew.create(req.body)
+    .then(crew => {
+      res.json(crew)
+    })
+  } catch (err) {
+    res.status(400).send({'err': err.errmsg});
+  }
+}
+
+function update(req,res) {
+  try {
+    Crew.findOne({_id: req.body.crewID, owner: req.user._id})
+    .then(crew => {
+      crew.name = req.body.name;
+      crew.phoneNo = req.body.phoneNo;
+      crew.role = req.body.role;
+      crew.save()
+      .then(crew => {
+        res.json(crew)
+      })
+    })
+  } catch (err) {
+    res.status(400).send({'err': err.errmsg});
+  }
+}
+
+function deleteCrew(req,res) {
+  try {
+    Crew.findByIdAndDelete(req.params.id)
+    .then(crew => {
+      res.json(crew)
+    })
+    .catch(err => {
+      res.json(err.message)
+    })
+  } catch (err) {
+    res.status(400).send({'err': err.errmsg});
+  }
+}
+
+
+function show(req,res) {
+  Crew.findOne({_id: req.params.id, owner: req.user._id})
+  .then(crew => {
+    res.json(crew)
   })
-}
-
-function deleteCrew(req, res){
-  Trip.findOne({_id: req.params.tripid, owner: req.user._id})  
-  .then(trip => {
-    const index = trip.crews.findIndex(crew => crew._id.equals(req.params.id))
-    trip.crews.splice(index, 1)
-    trip.save()
-    .then((trip) => {
-      res.json(trip)
-    })
-  })
-}
-
-function update(req, res){
-  Trip.findOne({_id: req.body.tripID, owner: req.user._id})
-  .then(trip => {
-    const index = trip.crews.findIndex(crew => crew._id.equals(req.body.crewId))
-    trip.crews[index] = req.body.crew;
-    trip.save()
-    .then((trip) => {
-      res.json(trip)
-    })
+  .catch(err => {
+    res.status(400).send({'err': err.errmsg});
   })
 }

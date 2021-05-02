@@ -1,34 +1,30 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useForm } from '../../../hooks/useForm'
-import styles from './CreateTrip.module.css'
-import * as tripAPI from '../../../services/tripService'
+import styles from './CreateCrew.module.css'
+import * as crewAPI from '../../../services/crewService'
 import { UserContext } from '../../../components/UserContext'
 
 
-export default function CreateTrip(props){
+export default function CreateCrew(props){
   const user = useContext(UserContext)
   const history = useHistory();
   const [invalidForm, setValidForm] = useState(true);
   const formRef = useRef();
   const [formData, handleChange] = useForm({
-    startDate: getToday(),
-    endDate: getToday(),
-    origin: '',
-    destination: '',
+    name: '',
+    phoneNo: '',
+    role: '',
   })
   const [message, setMessage] = useState('');
 
-  function getToday() {
-    return new Date().toISOString().split('T')[0]
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      const tripData = {...formData, owner: user._id,}
-      const newTrip = await tripAPI.addTrip(tripData)
-      history.push("/trip/" + newTrip._id);
+      const crewData = {...formData, owner: user._id,}
+      const newCrew = await crewAPI.addCrew(crewData)
+      history.push("/crew/" + newCrew._id);
     } catch (err) {
       setMessage(err.message)
     }
@@ -49,44 +45,37 @@ export default function CreateTrip(props){
             onSubmit={handleSubmit}
           >
             {message && <p>{message}</p>}
-            <label htmlFor="origin">Origin 
+            <label htmlFor="origin">Name 
             <input
               type="text"
               autoComplete="off"
-              value={formData.origin}
-              name="origin"
+              value={formData.name}
+              name="name"
               onChange={handleChange}
               required
             /></label>
-            <label htmlFor="destination">Destination 
+            <label htmlFor="destination">Phone Number
             <input
               type="text"
               autoComplete="off"
-              value={formData.destination}
-              name="destination"
+              value={formData.phoneNo}
+              name="phoneNo"
               onChange={handleChange}
               required
             /></label>
-            <label htmlFor="scheduleDate">Start Date
+            <label htmlFor="role">Role
             <input 
-              type='date' 
-              name='startDate'
-              value={formData.startDate}
-              onChange={handleChange}
-              min={getToday()}
-            /></label>
-            <label htmlFor="scheduleDate">End Date
-            <input 
-              type='date' 
-              name='engit dDate'
-              value={formData.endDate}
-              onChange={handleChange}
-              min={getToday()}
+               type="text"
+               autoComplete="off"
+               value={formData.role}
+               name="role"
+               onChange={handleChange}
+               required
             /></label>
             <button 
               onClick={handleSubmit}
               disabled={invalidForm}>
-            Add</button>
+            Add Crew</button>
           </form>
         </div>
       </div>\

@@ -1,47 +1,32 @@
-import React from 'react';
-import { UserContext } from '../../../components/UserContext'
-import * as crewsAPI from '../../../services/crewService'
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../../components/UserContext";
+import * as crewAPI from "../../../services/crewService";
+import CrewCard from '../../../components/CrewCard/CrewCard'
+import CreateCrew from '../CreateCrew/CreateCrew'
+import styles from './CrewList.module.css'
 
+export default function CrewList (props) {
+  const [crewList, setCrewList] = useState([]);
+  const user = useContext(UserContext);
 
-export default function CrewList ({tripData, tripID, setTripData, setCrewId, setDisplay}) {
+  useEffect(() => {
+    async function fetchData() {
+      const crewList = await crewAPI.getAll(user._id);
+      setCrewList(crewList);
+    }
+    fetchData();
+  }, []);
 
-  const deleteCrew = async (crewID) => {
-    const result = await crewsAPI.deleteOne(tripID, crewID);
-    setTripData(result);
-  }
-
-  const editCrew = (t) => {
-    setDisplay('view');
-    setCrewId(t)
-  }
   return (
-    <>
-      <h1>Crew</h1>
-      {tripData.crews.length ?
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Phone #</th>
-              <th>Role</th>
-              <th>Delete</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tripData.crews.map((crew, idx) => (
-              <tr>
-                <td>{crew.name}</td>
-                <td>{crew.phoneNo}</td>
-                <td>{crew.role}</td>
-                <td><button onClick={()=>deleteCrew(crew._id)} >Delete</button></td>
-                <td><button onClick={()=> editCrew(idx)}>Edit</button></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      
-      : <p>No Crew</p>}
-    </>
+    <div className={styles.cardContainer}>
+      {crewList.length > 0
+        ? crewList.map((crew, idx) => (
+          <Link to={"/crew/" + crew._id} key={idx}>
+            <CrewCard crewData={crew} />
+          </Link>
+          ))
+        : <CreateCrew />}
+    </div>
   );
-}
+};

@@ -1,51 +1,32 @@
-import React from 'react';
-import { UserContext } from '../../../components/UserContext'
-import * as passengersAPI from '../../../services/passengerService'
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { UserContext } from "../../../components/UserContext";
+import * as passengerAPI from "../../../services/passengerService";
+import PassengerCard from '../../../components/PassengerCard/PassengerCard'
+import CreatePassenger from '../CreatePassenger/CreatePassenger'
+import styles from './PassengerList.module.css'
 
+export default function PassengerList (props) {
+  const [passengerList, setPassengerList] = useState([]);
+  const user = useContext(UserContext);
 
-export default function PassengerList ({tripData, tripID, setTripData, setPassengerId, setDisplay}) {
+  useEffect(() => {
+    async function fetchData() {
+      const passengerList = await passengerAPI.getAll(user._id);
+      setPassengerList(passengerList);
+    }
+    fetchData();
+  }, []);
 
-  const deletePassenger = async (passengerID) => {
-    const result = await passengersAPI.deleteOne(tripID, passengerID);
-    setTripData(result);
-  }
-
-  const editPassenger = (t) => {
-    setDisplay('view');
-    setPassengerId(t)
-  }
   return (
-    <>
-      <h1>Passengers</h1>
-      {tripData.passengers.length ?
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Seat #</th>
-              <th>Drink</th>
-              <th>Food</th>
-              <th>Snack</th>
-              <th>Delete</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tripData.passengers.map((passenger, idx) => (
-              <tr>
-                <td>{passenger.name}</td>
-                <td>{passenger.seatNo}</td>
-                <td>{passenger.drink}</td>
-                <td>{passenger.food}</td>
-                <td>{passenger.snack}</td>
-                <td><button onClick={()=>deletePassenger(passenger._id)} >Delete</button></td>
-                <td><button onClick={()=> editPassenger(idx)}>Edit</button></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      
-      : <p>No Passengers</p>}
-    </>
+    <div className={styles.cardContainer}>
+      {passengerList.length > 0
+        ? passengerList.map((passenger, idx) => (
+          <Link to={"/passenger/" + passenger._id} key={idx}>
+            <PassengerCard passengerData={passenger} />
+          </Link>
+          ))
+        : <CreatePassenger />}
+    </div>
   );
-}
+};

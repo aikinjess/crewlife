@@ -6,7 +6,6 @@ nav {
   justify-content: space-between;
   font-family: 'Raleway';
   font-weight: 400;
-  box-shadow: 5px 5px 10px rgba(50,50,50, .3);
 
 }
 nav ul {
@@ -30,10 +29,10 @@ nav li {
 }
 
 nav li a {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #333;
   text-decoration: none;
-  text-shadow: 2px 2px 2px #ccc;
+
 }
 
 nav li:hover {

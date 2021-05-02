@@ -32,7 +32,7 @@ function create(req,res) {
 
 function update(req,res) {
   try {
-    Trip.findOne({_id: req.body.itinID, owner: req.user._id})
+    Trip.findOne({_id: req.body.tripID, owner: req.user._id})
     .then(trip => {
       trip.startDate = req.body.startDate;
       trip.endDate = req.body.endDate;

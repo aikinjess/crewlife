@@ -9,9 +9,8 @@ export default function TripCard({tripData, center}) {
   return (
       <div className={`${styles.box} ${center ? 'm-auto': ''}`}>
         <div className={styles.tripDetails}>
-          <img src={tripData.imageSrc} alt=""/>
           <div className={styles.details}>
-            <h1>Trip from {tripData.origin} to {tripData.destination}</h1>
+            <h1> {tripData.origin} to {tripData.destination}</h1>
             <p>
               Starts <strong>{departure}</strong><br />
               Ends <strong>{returnDate}</strong>
