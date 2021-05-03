@@ -12,9 +12,14 @@ export default function EditTrip({tripData, setEditTrip, setTripData}){
   const [invalidForm, setValidForm] = useState(true);
   const formRef = useRef();
   const [formData, handleChange] = useForm({
-    startDate: tripData.startDate.split('T')[0],
+    startDate: tripData.startDate,
     origin: tripData.origin,
     destination: tripData.destination,
+    departure: tripData.departure,
+    flightAttendant1: tripData.flightAttendant1,
+    flightAttendant2: tripData.flightAttendant2,
+    pilot: tripData.pilot,
+    firstOfficer: tripData.firstOfficer,
   })
   const [message, setMessage] = useState('');
 
@@ -56,14 +61,7 @@ export default function EditTrip({tripData, setEditTrip, setTripData}){
             onSubmit={handleSubmit}
           >
             {message && <p>{message}</p>}
-            <label htmlFor="startDate">Start Date
-            <input 
-              type='date' 
-              name='startDate'
-              value={formData.startDate}
-              onChange={handleChange}
-              min={getToday()}
-            /></label>
+            <h2>Trip Details</h2>
             <label htmlFor="origin">Origin 
             <input
               type="text"
@@ -81,6 +79,14 @@ export default function EditTrip({tripData, setEditTrip, setTripData}){
               name="destination"
               onChange={handleChange}
               required
+            /></label>
+            <label htmlFor="startDate">Start Date
+            <input 
+              type='date' 
+              name='startDate'
+              value={formData.startDate}
+              onChange={handleChange}
+              min={getToday()}
             /></label>
             <label htmlFor="departure">Departure(Military Time)
             <input 
@@ -100,8 +106,8 @@ export default function EditTrip({tripData, setEditTrip, setTripData}){
               onChange={handleChange}
               required
             /></label>
-            <h1>Crew</h1>
-             <label htmlFor="flightattendant1">Flight Attendant 1
+            <h2>Crew</h2>
+             <label htmlFor="flightAttendant1">Flight Attendant 1
             <input
               type="text"
               autoComplete="off"
@@ -139,7 +145,7 @@ export default function EditTrip({tripData, setEditTrip, setTripData}){
             /></label>
             <button className={styles.danger}
               onClick={deleteTrip}>
-              Delete Escape</button>
+              Delete Trip</button>
             <div className={styles.buttons}>
             <button 
               onClick={()=>setEditTrip(false)}

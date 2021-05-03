@@ -16,6 +16,11 @@ export default function CreateTrip(props){
     endDate: getToday(),
     origin: '',
     destination: '',
+    departure: '',
+    flightAttendant1: '',
+    flightAttendant2: '',
+    pilot: '',
+    firstOfficer: '',
   })
   const [message, setMessage] = useState('');
 
@@ -49,6 +54,7 @@ export default function CreateTrip(props){
             onSubmit={handleSubmit}
           >
             {message && <p>{message}</p>}
+            <h2>Trip Details</h2>
             <label htmlFor="origin">Origin 
             <input
               type="text"
@@ -66,6 +72,14 @@ export default function CreateTrip(props){
               name="destination"
               onChange={handleChange}
               required
+            /></label>
+            <label htmlFor="startDate">Start Date
+            <input 
+              type='date' 
+              name='startDate'
+              value={formData.startDate}
+              onChange={handleChange}
+              min={getToday()}
             /></label>
             <label htmlFor="departure">Departure(Military Time)
             <input 
@@ -85,7 +99,7 @@ export default function CreateTrip(props){
               onChange={handleChange}
               required
             /></label>
-            <h1>Crew</h1>
+            <h2>Crew</h2>
              <label htmlFor="flightattendant1">Flight Attendant 1
             <input
               type="text"

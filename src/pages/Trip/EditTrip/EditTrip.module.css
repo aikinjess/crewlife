@@ -1,34 +1,12 @@
-.twoColumns {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: flex-start;
-    width: max-content;
-    margin: 0 auto;
-  }
+form {
+  padding-bottom: 0rem;
+  border-radius: 1rem;
+  max-width: 70%;
   
-  .twoColumns > div {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-  }
-  
-  .colOne {
-    align-items: flex-end;
-  }
-  
-  
-  .buttons > button {
-    margin: 1rem 0 0 1rem;
-  }
-  
-  .buttons > button:hover {
-    color: var(--dark-pink)
-  }
-  
-  button.danger {
-    margin: 0.5rem 0;
-    color: rgba(200, 50, 50, 1);
-  }
-  
-  
+  margin: 0 auto;
+  justify-content: space-between;
+  background: aliceblue;
+
+}
+
+
