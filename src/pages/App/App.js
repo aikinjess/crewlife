@@ -7,15 +7,10 @@ import authService from "../../services/authService"
 import CreateTrip from "../Trip/CreateTrip/CreateTrip";
 import TripList from '../Trip/TripList/TripList';
 import TripView from '../Trip/TripView/TripView';
-import CreateCrew from "../Crew/CreateCrew/CreateCrew";
-import CrewList from '../Crew/CrewList/CrewList';
-import CrewView from '../Crew/CrewView/CrewView';
-import CreatePassenger from "../Passengers/CreatePassenger/CreatePassenger";
-import PassengerList from '../Passengers/PassengersList/PassengersList';
-import PassengerView from '../Passengers/PassengerView/PassengerView';
 import { UserContext } from '../../components/UserContext'
 import ProtectedRoute from '../../components/ProtectedRoute'
-
+import WelcomePage from '../WelcomePage/WelcomePage'
+import './App.css'
 
 
 export default function App (props) {
@@ -61,29 +56,11 @@ export default function App (props) {
             <TripList />
           </ProtectedRoute>
 
-          <ProtectedRoute path='/crew/new'>
-            <CreateCrew />
-          </ProtectedRoute>
-          
-          <ProtectedRoute path='/crew/:id'>
-            <CrewView />
-          </ProtectedRoute>
-
-          <ProtectedRoute path='/crew'>
-            <CrewList />
-          </ProtectedRoute>
-
-          <ProtectedRoute path='/passenger/new'>
-            <CreatePassenger />
-          </ProtectedRoute>
-          
-          <ProtectedRoute path='/passenger/:id'>
-            <PassengerView />
-          </ProtectedRoute>
-
-          <ProtectedRoute path='/passenger'>
-            <PassengerList />
-          </ProtectedRoute>
+          <Route path="/"
+            render={() => (
+              <WelcomePage />            
+            )}
+          />
  
   
         </Switch>

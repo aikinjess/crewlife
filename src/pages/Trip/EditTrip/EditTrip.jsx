@@ -1,7 +1,7 @@
 import React, { useContext, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useForm } from '../../../hooks/useForm'
-import styles from './EditTrip.css'
+import styles from './EditTrip.module.css'
 import * as tripAPI from '../../../services/tripService'
 import { UserContext } from '../../../components/UserContext'
 
@@ -13,11 +13,14 @@ export default function EditTrip({tripData, setEditTrip, setTripData}){
   const formRef = useRef();
   const [formData, handleChange] = useForm({
     startDate: tripData.startDate.split('T')[0],
-    endDate: tripData.endDate.split('T')[0],
     origin: tripData.origin,
     destination: tripData.destination,
   })
   const [message, setMessage] = useState('');
+
+  function getToday() {
+    return new Date().toISOString().split('T')[0]
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,18 +47,23 @@ export default function EditTrip({tripData, setEditTrip, setTripData}){
   return (
     <>
     <div className="whiteBox">
-    <h1>Edit Trip</h1>
     <div className={styles.twoColumns}>
-        <div className={styles.colOne}>
-         
-        </div>
-        <div className={`userForm ${styles.colTwo}`}>
+        <div className={`userForm ${styles.colOne}`}>
+        
           <form 
             autoComplete="off"
             ref={formRef}
             onSubmit={handleSubmit}
           >
             {message && <p>{message}</p>}
+            <label htmlFor="startDate">Start Date
+            <input 
+              type='date' 
+              name='startDate'
+              value={formData.startDate}
+              onChange={handleChange}
+              min={getToday()}
+            /></label>
             <label htmlFor="origin">Origin 
             <input
               type="text"
@@ -74,19 +82,60 @@ export default function EditTrip({tripData, setEditTrip, setTripData}){
               onChange={handleChange}
               required
             /></label>
-            <label htmlFor="scheduleDate">Start Date
+            <label htmlFor="departure">Departure(Military Time)
             <input 
-              type='date' 
-              name='startDate'
-              value={formData.startDate}
+              type="text"
+              autoComplete="off"
+              value={formData.departure}
+              name="departure"
               onChange={handleChange}
+              required
             /></label>
-            <label htmlFor="scheduleDate">End Date
+            <label htmlFor="scheduleDate">Arrival(Military Time)
             <input 
-              type='date' 
-              name='endDate'
-              value={formData.endDate}
+              type="text"
+              autoComplete="off"
+              value={formData.arrival}
+              name="arrival"
               onChange={handleChange}
+              required
+            /></label>
+            <h1>Crew</h1>
+             <label htmlFor="flightattendant1">Flight Attendant 1
+            <input
+              type="text"
+              autoComplete="off"
+              value={formData.flightAttendant1}
+              name="flightattendant1"
+              onChange={handleChange}
+              required
+            /></label>
+            <label htmlFor="flightattendant2">Flight Attendant 2
+            <input
+              type="text"
+              autoComplete="off"
+              value={formData.flightAttendant2}
+              name="flightattendant2"
+              onChange={handleChange}
+              required
+            /></label>
+            <label htmlFor="pilot">Pilot
+            <input
+              type="text"
+              autoComplete="off"
+              value={formData.pilot}
+              name="pilot"
+              onChange={handleChange}
+              required
+            /></label>
+             <label htmlFor="firstOfficer">First Officer
+            <input
+              type="text"
+              autoComplete="off"
+              value={formData.firstOfficer}
+              name="firstOfficer"
+              onChange={handleChange}
+              required
             /></label>
             <button className={styles.danger}
               onClick={deleteTrip}>

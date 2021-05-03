@@ -10,13 +10,9 @@ const NavBar = ({ handleLogout }) => {
   return (
     <nav>
       <ul>
-       
+      <a className=" left" href="/"><img src="https://api.freelogodesign.org/files/62570f10e044403d87ee31ae2002dc28/thumb/logo_200x200.png?v=0" height='120' alt="netflix-font" border="0"/></a>
         <li><Link to="/trip">My Trips</Link></li>
         <li><Link to="/trip/new">New Trip</Link></li>
-        <li><Link to="/passenger">Passengers</Link></li>
-        <li><Link to="/passenger/new">Add Passengers</Link></li>
-        <li><Link to="/crew">Crew</Link></li>
-        <li><Link to="/crew/new">Add Crew</Link></li>
       </ul>
       {user ?
         <ul className="nav-login">

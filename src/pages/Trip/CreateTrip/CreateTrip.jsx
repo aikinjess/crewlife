@@ -67,21 +67,60 @@ export default function CreateTrip(props){
               onChange={handleChange}
               required
             /></label>
-            <label htmlFor="scheduleDate">Start Date
+            <label htmlFor="departure">Departure(Military Time)
             <input 
-              type='date' 
-              name='startDate'
-              value={formData.startDate}
+              type="text"
+              autoComplete="off"
+              value={formData.departure}
+              name="departure"
               onChange={handleChange}
-              min={getToday()}
+              required
             /></label>
-            <label htmlFor="scheduleDate">End Date
+            <label htmlFor="scheduleDate">Arrival(Military Time)
             <input 
-              type='date' 
-              name='engit dDate'
-              value={formData.endDate}
+              type="text"
+              autoComplete="off"
+              value={formData.arrival}
+              name="arrival"
               onChange={handleChange}
-              min={getToday()}
+              required
+            /></label>
+            <h1>Crew</h1>
+             <label htmlFor="flightattendant1">Flight Attendant 1
+            <input
+              type="text"
+              autoComplete="off"
+              value={formData.flightAttendant1}
+              name="flightattendant1"
+              onChange={handleChange}
+              required
+            /></label>
+            <label htmlFor="flightattendant2">Flight Attendant 2
+            <input
+              type="text"
+              autoComplete="off"
+              value={formData.flightAttendant2}
+              name="flightattendant2"
+              onChange={handleChange}
+              required
+            /></label>
+            <label htmlFor="pilot">Pilot
+            <input
+              type="text"
+              autoComplete="off"
+              value={formData.pilot}
+              name="pilot"
+              onChange={handleChange}
+              required
+            /></label>
+             <label htmlFor="firstOfficer">First Officer
+            <input
+              type="text"
+              autoComplete="off"
+              value={formData.firstOfficer}
+              name="firstOfficer"
+              onChange={handleChange}
+              required
             /></label>
             <button 
               onClick={handleSubmit}

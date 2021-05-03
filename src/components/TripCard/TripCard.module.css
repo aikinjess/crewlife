@@ -1,0 +1,61 @@
+.box h1 {
+  color: rgb(117, 14, 213);
+}
+
+.box {
+  padding-bottom: 0rem;
+  border-radius: 1rem;
+  max-width: 50%;
+  max-height: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+  background: rgba(0, 255, 251, 0.605);
+  
+}
+
+
+.twoColumns {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 auto;
+}
+
+.twoColumns > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.colOne {
+  align-items: flex-end;
+}
+
+
+.colTwo {
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.colTwo h1 {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  font-size: 3.5rem;
+}
+
+.colTwo p {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 3rem;
+  padding: 1rem 0;
+}
+
+.colTwo p > strong{
+  font-size: 2.2rem;
+}
+
+.colTwo a {
+  margin-top: auto;
+}

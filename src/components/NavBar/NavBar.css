@@ -24,12 +24,12 @@ nav ul.nav-login {
 nav li {
   display: flex;
   height: 100%;
-  padding: 1.5rem 1.5rem;
+  padding: 1rem 1rem;
   align-items: center;
 }
 
 nav li a {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #333;
   text-decoration: none;
 

@@ -34,10 +34,20 @@ function update(req,res) {
   try {
     Trip.findOne({_id: req.body.tripID, owner: req.user._id})
     .then(trip => {
+      trip.departure = req.body.departure;
       trip.startDate = req.body.startDate;
-      trip.endDate = req.body.endDate;
+      trip.arrival = req.body.arrival;
       trip.origin = req.body.origin;
       trip.destination = req.body.destination;
+      trip.flightAttendant1 = req.body.flightAttendant1;
+      trip.flightAttendant2 = req.body.flightAttendant2;
+      trip.phoneNo = req.body.phoneNo;
+      trip.pilot = req.body.pilot;
+      trip.firstOfficer = req.body.firstOfficer;
+      trip.passengerName = req.body.passengerName;
+      trip.passengerSeatNo = req.body.passengerSeatNo;
+      trip.passengerDrink = req.body.passengerDrink;
+      trip.passengerFood = req.body.passengerFood;
       trip.save()
       .then(trip => {
         res.json(trip)

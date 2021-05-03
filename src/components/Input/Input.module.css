@@ -1,0 +1,15 @@
+.inputForm form {
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    bottom: 0;
+  }
+  
+  .inputForm input {
+    height: 2.5em;
+  }
+  
+  .inputForm button {
+    height: 2.5em;
+    margin: 0 0.5em;
+  }

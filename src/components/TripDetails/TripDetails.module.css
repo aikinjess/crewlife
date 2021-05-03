@@ -1,5 +1,9 @@
+.colTwo h1 {
+  color: rgb(117, 14, 213);
+}
+
 .box {
-    background: rgba(255,255,255,.9);
+    background: rgba(0, 255, 251, 0.605);
     padding: 2rem;
     border-radius: 1rem;
     max-width: 60%;

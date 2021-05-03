@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './TripCard.css'
+import styles from './TripCard.module.css'
 
 export default function TripCard({tripData, center}) {
 
@@ -7,16 +7,17 @@ export default function TripCard({tripData, center}) {
   const returnDate = new Date(tripData.endDate).toLocaleDateString();
 
   return (
+    <div className={`${styles.box2} ${center ? 'm-auto': ''}`}>
       <div className={`${styles.box} ${center ? 'm-auto': ''}`}>
         <div className={styles.tripDetails}>
           <div className={styles.details}>
             <h1> {tripData.origin} to {tripData.destination}</h1>
             <p>
-              Starts <strong>{departure}</strong><br />
-              Ends <strong>{returnDate}</strong>
+            Starts <strong>{tripData.departure}</strong><br />
             </p>
           </div>
         </div>
+      </div>
       </div>
   )
 }

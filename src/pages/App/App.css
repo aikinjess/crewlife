@@ -3,9 +3,20 @@
 }
 body {
   width: 100%;
+  background-color: #01143a;
   
 }
 
+h1 {
+  color: aliceblue;
+}
+p {
+  color: aliceblue;
+}
+
+label {
+  color: aliceblue;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -51,10 +62,6 @@ body {
   background-color: rgb(230, 230, 230);
 }
 
-.card .card-reveal {
-  width: 480px;
-  background-color: rgb(230, 230, 230);
-}
 
 .material-icons {
   font-family: "Material Icons";
