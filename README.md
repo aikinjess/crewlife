@@ -9,9 +9,9 @@ This project is a mern-stack application where flight attendants are able to log
 
 ## Screenshots
 
-![Screenshot](blob:https://imgur.com/85a6c935-f00b-42eb-a32d-8fd8ca6ccec7)
+![Screenshot](https://imgur.com/85a6c935-f00b-42eb-a32d-8fd8ca6ccec7)
 
-![Screenshot 2](blob:https://imgur.com/d5f30203-9f6a-482b-8df5-3d7cfad0eb41)
+![Screenshot 2](https://imgur.com/d5f30203-9f6a-482b-8df5-3d7cfad0eb41)
 
 ## Technologies Used:
 
