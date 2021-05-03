@@ -5,27 +5,28 @@ This project is a mern-stack application where flight attendants are able to log
 
 ### [Link to Trello Board](https://trello.com/b/RB0WYOvY/crewlife)
 
-### [Open application here!](https://a-touch-of-class.herokuapp.com)
+### [Open application here!](https://crewlife.herokuapp.com/login)
 
 ## Screenshots
 
-![Screenshot](https://i.imgur.com/q8kHKFI.jpg)
+![Screenshot](blob:https://imgur.com/85a6c935-f00b-42eb-a32d-8fd8ca6ccec7)
 
-![Screenshot 2](https://i.imgur.com/SxOaYNk.png)
+![Screenshot 2](blob:https://imgur.com/d5f30203-9f6a-482b-8df5-3d7cfad0eb41)
 
 ## Technologies Used:
 
-* Mongoose 5.12
-* MongoDB 4.4.4
-* Express 4.16
-* Node 15.9
+* Mongoose
+* MongoDB 
+* Express 
+* Node.js
 * CSS3
 * HTML5
-* Javascript ES6
-* Passport Oauth 2.0
+* React.js
+* JWT Auth
 
 
-## Future Plans
+## IceBox Items
 
-* Insert a Google Calendar API to schedule appointments
-* Implement a Schema for Ratings so users can see the ratings for each stylist
+*  Google Map API
+*  Passengers Section
+*  Socket.io
