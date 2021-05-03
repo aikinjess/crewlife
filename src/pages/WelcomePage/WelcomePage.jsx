@@ -6,13 +6,7 @@ import styles from './WelcomePage.module.css'
 export default function WelcomePage(props) {
   return (
     <main id= "background">
-      <div className={styles.welcomePage}>
-       
-     
-       
-  
-        
-        
+      <div className={styles.welcomePage}>  
       <h3><Link to='/trip/new'>Begin Your Trip</Link></h3>
       </div>
   </main>

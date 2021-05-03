@@ -4,7 +4,6 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-family: 'Raleway';
   font-weight: 400;
 
 }
